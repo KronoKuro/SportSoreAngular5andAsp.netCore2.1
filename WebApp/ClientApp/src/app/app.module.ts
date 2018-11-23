@@ -11,6 +11,8 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { Repository } from './models/repository.model';
 import { ProductServices } from './product.services';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module.module';
 
 @NgModule({
   declarations: [
@@ -22,8 +24,10 @@ import { ProductServices } from './product.services';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    MaterialModule,
     RouterModule.forRoot([
      // { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'home', component: HomeComponent },

@@ -26,7 +26,7 @@ export class HomeComponent  {
       this.products = resp;
       //this.category = resp.category;
       //this.category = resp.category;
-      console.log(this.products.category);
+     // console.log(this.products.category);
     });
   }
 }
