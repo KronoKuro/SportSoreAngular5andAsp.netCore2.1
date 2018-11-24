@@ -13,6 +13,8 @@ import { Repository } from './models/repository.model';
 import { ProductServices } from './product.services';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module.module';
+import { CategoryServices } from './category.services';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import { MaterialModule } from './material.module.module';
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
-  providers: [Repository, ProductServices],
+  providers: [Repository, ProductServices, CategoryServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

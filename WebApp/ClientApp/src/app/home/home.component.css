@@ -1,5 +1,6 @@
 
 .wrapp_exemple{
-  max-width: 300px;
+  width: 300px;
   display:inline-block;
+  margin: 10px 10px;
 }

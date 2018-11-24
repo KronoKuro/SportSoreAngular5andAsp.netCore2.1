@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Category } from '../models/category.model';
+import { CategoryServices } from '../category.services';
+
+
 
 @Component({
   selector: 'app-nav-menu',
@@ -6,6 +10,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
+  constructor(private categoryServices: CategoryServices) { }
+  categories: Category[];
+
+  ngOnInit() {
+    this.getCategory();
+  }
+
+  getCategory() {
+    this.categoryServices.getCategory().subscribe(resp => {
+      this.categories = resp;
+    });
+  }
+
+ 
+
   isExpanded = false;
 
   collapse() {

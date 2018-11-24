@@ -22,11 +22,25 @@
                         <span class='glyphicon glyphicon-education'></span> Counter
                     </a>
                 </li>
+              <li [routerLinkActive]='["link-active"]'>
+                <a [routerLink]='["/fetch-data"]' (click)='collapse()'>
+                  <span class='glyphicon glyphicon-th-list'></span> Fetch data
+                </a>
+              </li>
+               
+            </ul>
+            <ul *ngFor="let c of categories" class='nav navbar-nav'>
                 <li [routerLinkActive]='["link-active"]'>
-                    <a [routerLink]='["/fetch-data"]' (click)='collapse()'>
-                        <span class='glyphicon glyphicon-th-list'></span> Fetch data
+                    <a routerLink="/category/{{c.id}}" (click)='collapse()'>
+                        <span class='glyphicon glyphicon-th-list'></span>
+                        {{c.name}}
                     </a>
                 </li>
+                    <!--<a [routerLink]='["/{{c.id}}"]' (click)='collapse()'>
+                      <span class='glyphicon glyphicon-th-list'></span> {{c.name}}
+                    </a>-->
+                    
+                  
             </ul>
         </div>
     </div>
