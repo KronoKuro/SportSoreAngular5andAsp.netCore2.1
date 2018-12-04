@@ -11,8 +11,10 @@ export class ProductServices {
 
   private url: string = 'api/home';
 
-  getProduct() {
+  getProduct()
+  {
     debugger;
-    return this.http.get(this.url);
+    return this.http.get<Product[]>(this.url);
   }
+
 }

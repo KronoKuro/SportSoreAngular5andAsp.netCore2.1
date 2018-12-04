@@ -1,22 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../models/category.model';
 import { CategoryServices } from '../category.services';
-import { ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from '../models/product.model';
 
 
 
 @Component({
-  selector: 'app-nav-menu',
-  templateUrl: './nav-menu.component.html',
-  styleUrls: ['./nav-menu.component.css']
+  selector: 'app-category',
+  templateUrl: './category.component.html',
+  styleUrls: ['./category.component.css']
 })
-export class NavMenuComponent {
-  constructor(private categoryServices: CategoryServices) { }
+export class CategoryComponent {
+  constructor(private categoryServices: CategoryServices, private router: ActivatedRoute) { }
   categories: Category[];
+  products: Product[];
   
   ngOnInit() {
     this.getCategory();
+    //let id = this.router.snapshot.params['id'];
+    //this.getProductByCategory(id);
   }
 
   getCategory() {
@@ -25,13 +28,6 @@ export class NavMenuComponent {
     });
   }
 
-  isExpanded = false;
+ 
 
-  collapse() {
-    this.isExpanded = false;
-  }
-
-  toggle() {
-    this.isExpanded = !this.isExpanded;
-  }
 }

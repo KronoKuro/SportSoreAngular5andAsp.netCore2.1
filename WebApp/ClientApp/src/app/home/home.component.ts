@@ -4,6 +4,8 @@ import { Product } from '../models/product.model';
 import { Repository } from '../models/repository.model';
 import { ProductServices } from '../product.services';
 import { Category } from '../models/category.model';
+import { ActivatedRoute } from '@angular/router';
+import { CategoryServices } from '../category.services';
 
 
 @Component({
@@ -12,22 +14,32 @@ import { Category } from '../models/category.model';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent  {
-  constructor(private productServices: ProductServices, private http: HttpClient) {
+  constructor(private productServices: ProductServices, private http: HttpClient,
+    private router: ActivatedRoute, private categoryServices: CategoryServices) {
     }
-  products: Product;
+  products: Product[];
   category: Category;
 
   ngOnInit() {
-    this.getProduct();
+    debugger;
+    let id = this.router.snapshot.params['id'];
+    if (id != null) {
+      this.getProductByCategory(id);
+    } else {
+      this.getProduct();
+    }
   }
 
   getProduct() {
     return this.productServices.getProduct().subscribe(resp => {
       debugger;
       this.products = resp;
-      //this.category = resp.category;
-      //this.category = resp.category;
-     // console.log(this.products.category);
+    });
+  }
+
+  getProductByCategory(id: string) {
+    this.categoryServices.getProductByCategory(id).subscribe(resp => {
+      this.products = resp;
     });
   }
 }

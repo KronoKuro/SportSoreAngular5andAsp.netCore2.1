@@ -31,7 +31,7 @@
             </ul>
             <ul *ngFor="let c of categories" class='nav navbar-nav'>
                 <li [routerLinkActive]='["link-active"]'>
-                    <a routerLink="/category/{{c.id}}" (click)='collapse()'>
+                    <a routerLink="/home/category/{{c.id}}" (click)='collapse()'>
                         <span class='glyphicon glyphicon-th-list'></span>
                         {{c.name}}
                     </a>
