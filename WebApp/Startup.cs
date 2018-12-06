@@ -32,6 +32,17 @@ namespace WebApp
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("default", o =>
+                {
+                    o.AllowAnyHeader();
+                    o.AllowAnyMethod();
+                    o.AllowAnyOrigin();
+                    o.AllowCredentials();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

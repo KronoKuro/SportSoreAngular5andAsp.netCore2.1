@@ -20,16 +20,17 @@ export class NavMenuComponent {
   }
 
   getCategory() {
+    debugger;
     this.categoryServices.getCategory().subscribe(resp => {
       this.categories = resp;
     });
   }
 
   isExpanded = false;
-
+  /*
   collapse() {
     this.isExpanded = false;
-  }
+  }*/
 
   toggle() {
     this.isExpanded = !this.isExpanded;

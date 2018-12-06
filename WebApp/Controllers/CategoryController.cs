@@ -5,7 +5,7 @@ using WebApp.Models;
 
 namespace WebApp.Controllers
 {
-    [Route("api/home/category")]
+    [Route("api/category")]
     public class CategoryController : Controller
     {
         private ApplicationContext context;
@@ -23,12 +23,21 @@ namespace WebApp.Controllers
             var categories = context.Categories.ToList();
             return Ok(categories);
         }
-        
+
+
         [HttpGet("{id}")]
         public IActionResult GetProductByCategory(string id)
         {
             var category = context.Categories.FirstOrDefault(c => c.Id == id);
-            var products = context.Products.Where(p => p.CategoryId == id);
+            var products = context.Products.Where(p => p.CategoryId == id).Select(x => new ProductsWithCategory()
+            {
+                Id = x.Id,
+                CategoryName = x.Category.Name,
+                Name = x.Name,
+                Description = x.Description,
+                Price = x.Price,
+                CategoryId = x.CategoryId
+            });
             return Ok(products.ToList());
         }
     }

@@ -37,12 +37,14 @@ import { CategoryComponent } from './category/category.component';
      // { path: '', component: HomeComponent, pathMatch: 'full' },
       {
         path: 'home', component: HomeComponent,
-        children: [
-          { path: 'category/:id', component: CategoryComponent, },
-        ]
+        /*children: [
+          { path: 'category/:id', component: HomeComponent, },
+        ]*/
       },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'products', component: HomeComponent, },
+      { path: 'category/:id', component: CategoryComponent, },
      // { path: 'category', component: CategoryComponent }
     ])
   ],

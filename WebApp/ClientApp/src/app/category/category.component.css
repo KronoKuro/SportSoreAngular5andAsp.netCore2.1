@@ -57,3 +57,10 @@ li.link-active a:focus {
         text-overflow: ellipsis;
     }
 }
+
+
+.wrapp_exemple {
+  width: 300px;
+  display: inline-block;
+  margin: 10px 10px;
+}

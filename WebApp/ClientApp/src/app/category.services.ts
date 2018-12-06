@@ -10,7 +10,7 @@ export class CategoryServices {
 
   constructor(private http: HttpClient) { }
 
-  private url: string = 'api/home/category';
+  private url: string = 'api/category';
 
   getCategory() {
     debugger;
@@ -18,6 +18,6 @@ export class CategoryServices {
   }
 
   getProductByCategory(id: string) {
-    return this.http.get<Product[]>("api/home/category" + '/' + id);
+    return this.http.get<Product[]>("api/category" + '/' + id);
   }
 }

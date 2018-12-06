@@ -16,18 +16,16 @@ import { CategoryServices } from '../category.services';
 export class HomeComponent  {
   constructor(private productServices: ProductServices, private http: HttpClient,
     private router: ActivatedRoute, private categoryServices: CategoryServices) {
+   
     }
   products: Product[];
   category: Category;
 
   ngOnInit() {
     debugger;
-    let id = this.router.snapshot.params['id'];
-    if (id != null) {
-      this.getProductByCategory(id);
-    } else {
-      this.getProduct();
-    }
+    
+    this.getProduct();
+    
   }
 
   getProduct() {
