@@ -35,14 +35,40 @@ namespace WebApp.Controllers
         }
 
         [HttpGet("{id}")]
-        public Product Get(string id)
+        public ProductsWithCategory Get(string id)
         {
-            var product = context.Products.FirstOrDefault(p => p.Id == id);
+            var product = context.Products.Where(p => p.Id == id)
+                .Select(x => new ProductsWithCategory
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Description = x.Description,
+                    CategoryId = x.CategoryId,
+                    CategoryName = x.Category.Name
+                });
+
             if (product != null)
-                return product;
+                return product.FirstOrDefault();
 
             throw new Exception(new HttpResponseMessage(HttpStatusCode.NotFound).ToString());
         }
+
+        [HttpGet("byCategory/{id}")]
+        public IActionResult GetProductsByIdCategory(string id)
+        {
+            var products = context.Products
+                .Where(x => x.CategoryId == id)
+                .Include(x => x.Category).Select(x => new ProductsWithCategory
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Description = x.Description,
+                    CategoryId = x.CategoryId,
+                    CategoryName = x.Category.Name
+                });
+            return Ok(products);
+        }
+
 
         [HttpPut]
         public HttpResponseMessage Put([FromBody] Product product)

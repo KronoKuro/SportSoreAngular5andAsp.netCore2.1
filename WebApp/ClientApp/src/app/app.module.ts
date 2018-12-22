@@ -14,6 +14,8 @@ import { ProductServices } from './product.services';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module.module';
 import { CategoryServices } from './category.services';
+import { CategoryComponent } from './category.component/category.component';
+import { ProductDetailComponent } from './home/product-detail/product-detail.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { CategoryServices } from './category.services';
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    CategoryComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,8 +37,10 @@ import { CategoryServices } from './category.services';
     RouterModule.forRoot([
      // { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
+      { path: 'product/:id', component: ProductDetailComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'category/:id', component: CategoryComponent },
     ])
   ],
   providers: [Repository, ProductServices, CategoryServices],

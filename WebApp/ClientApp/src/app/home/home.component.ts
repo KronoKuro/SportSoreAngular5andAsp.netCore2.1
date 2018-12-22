@@ -11,7 +11,7 @@ import { Category } from '../models/category.model';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent  {
+export class HomeComponent implements OnInit  {
   constructor(private productServices: ProductServices, private http: HttpClient) {
     }
   products: Product;
@@ -23,11 +23,7 @@ export class HomeComponent  {
 
   getProduct() {
     return this.productServices.getProduct().subscribe(resp => {
-      debugger;
       this.products = resp;
-      //this.category = resp.category;
-      //this.category = resp.category;
-     // console.log(this.products.category);
     });
   }
 }
