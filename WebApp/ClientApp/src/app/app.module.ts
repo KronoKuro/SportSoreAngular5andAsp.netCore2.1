@@ -16,6 +16,9 @@ import { MaterialModule } from './material.module.module';
 import { CategoryServices } from './category.services';
 import { CategoryComponent } from './category.component/category.component';
 import { ProductDetailComponent } from './home/product-detail/product-detail.component';
+import { CartComponent } from './cart-component/cart.component';
+import { CartServices } from './cart.services';
+
 
 
 @NgModule({
@@ -26,7 +29,8 @@ import { ProductDetailComponent } from './home/product-detail/product-detail.com
     CounterComponent,
     FetchDataComponent,
     CategoryComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -41,9 +45,10 @@ import { ProductDetailComponent } from './home/product-detail/product-detail.com
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'category/:id', component: CategoryComponent },
+      { path: 'cart', component: CartComponent },
     ])
   ],
-  providers: [Repository, ProductServices, CategoryServices],
+  providers: [Repository, ProductServices, CategoryServices, CartServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

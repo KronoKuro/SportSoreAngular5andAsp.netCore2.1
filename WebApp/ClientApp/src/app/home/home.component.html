@@ -55,6 +55,9 @@
           <button mat-button>
             <a routerLink='/product/{{p?.id}}'>SHARE</a>
           </button>
+          <button mat-button (click)="addProductToCart(p)">
+            Add to Cart
+          </button>
         </mat-card-actions>
       </mat-card>
     </div>

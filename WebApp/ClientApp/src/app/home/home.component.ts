@@ -4,6 +4,7 @@ import { Product } from '../models/product.model';
 import { Repository } from '../models/repository.model';
 import { ProductServices } from '../product.services';
 import { Category } from '../models/category.model';
+import { CartServices } from '../cart.services';
 
 
 @Component({
@@ -12,7 +13,9 @@ import { Category } from '../models/category.model';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit  {
-  constructor(private productServices: ProductServices, private http: HttpClient) {
+  constructor(private productServices: ProductServices,
+     private http: HttpClient,
+     private cartServices: CartServices) {
     }
   products: Product;
   category: Category;
@@ -25,5 +28,9 @@ export class HomeComponent implements OnInit  {
     return this.productServices.getProduct().subscribe(resp => {
       this.products = resp;
     });
+  }
+
+  addProductToCart(product: any) {
+    this.cartServices.addProductToCart(product);
   }
 }
